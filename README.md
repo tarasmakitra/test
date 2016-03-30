@@ -21,10 +21,11 @@ duplicates from `st1_app_dev` or they are legacy databases.
       * `st1_u4xko4r9e`
 
   > **NOTE**: We have some databases that don't follow default naming conventions for databases. Somehow.
-  > In `meta` databases we have table `accounts`. It contains fields `account_slug` and `db_name`.
-  > By default `db_name` = `st1_` + `account_slug`. For example `account_slug` = `demo`, so `db_name` = `st1_` + `demo` = `st1_demo`.
+  > In meta databases we have table `accounts`. It contains fields `account_slug` and `db_name`.
+  > By default `db_name` = `st1_` + `account_slug`. For instance, `account_slug` = `demo`, so `db_name` = `st1_` + `demo` = `st1_demo`.
   > BUT somehow we have couple of databases that don't follow this convention. I don't know why, because this is so 
-  > weird and stupid. Here is a list of this databases: `designcorp`, `rspi`. If we will have more such databases in `st1_meta`
+  > weird and stupid. Here is a list of `account_slug` of these databases: `designcorp`, `rspi`. Their `db_name` are totally different.
+  > If we will have more such databases in `st1_meta`
   > in future, then we will need to update `config/params.php` file:
   ```php
   <?php
@@ -46,8 +47,7 @@ duplicates from `st1_app_dev` or they are legacy databases.
       * `st1_demo_t_gaither`  
       * `st1_demo`
 
-4. **`migrate-legacy`** - we still have this for our couple of legacy databases. Migration files for this command are stored in folder .
-List of affected databases:
+4. **`migrate-legacy`** - we still have this for our couple of legacy databases.  
   - *Migration path*: `migrations/legacy`
   
   - *Affected databases*:  
@@ -73,7 +73,7 @@ You are free to combine this parameters in any way you want.
   > **NOTE**: all database names should be passes WITHOUT `st1_` prefix.
   
   - **`--command="$value"`** - please refer to [Yii2 Migrations guide](https://github.com/yiisoft/yii2/blob/master/docs/guide/db-migrations.md) on 
-  what available commands you have here. This parameter is always **REQUIRED** for every command.
+   available commands for `$value`. This parameter is always **REQUIRED** for every command.
   
   Place the Yii2 migration command to `$value` **WITHOUT** `php yii migrate/` part.
   
@@ -133,4 +133,4 @@ Apply all new migrations for `st1_meta` database:
   
 Modify migration history for `st1_meta_dev` database:
 
-  `php yii migrate-meta --command="mark "2015-01-01 18:54:01"" --env="dev"`
+  `php yii migrate-meta --command="mark '2015-01-01 18:54:01'" --env="dev"`
